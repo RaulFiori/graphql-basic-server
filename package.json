@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "graphql-yoga": "1.18.0",
+    "moment": "^2.24.0",
     "pg": "^7.11.0",
     "sequelize": "^5.8.11",
     "sequelize-cli": "^5.5.0"

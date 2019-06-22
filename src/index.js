@@ -1,12 +1,12 @@
 const { GraphQLServer } = require('graphql-yoga');
 const models = require('./models');
+const moment = require('moment');
 const { File } = models;
 
 const resolvers = {
   Query: {
     files: () => File.findAll(),
-    file: (_, { id }) => File.findByPk(id),
-    hello: () => 'olá'
+    file: (_, { id }) => File.findByPk(id)
   },
   Mutation: {
     createFile: (_, { file }) => File.create(file, { returning: true }),
@@ -18,6 +18,9 @@ const resolvers = {
     },
     deleteFile: (_, { id }) =>
       File.destroy({ where: { id } }).then(() => 'file deleted')
+  },
+  File: {
+    createdAt: ({ createdAt }) => moment(createdAt).format('DD/MM/YYYY HH:mm')
   }
 };
 
