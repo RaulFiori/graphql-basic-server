@@ -1,0 +1,17 @@
+type Query {
+  files: [File]
+  file: File
+  hello: String
+}
+
+# type Mutation {
+#   createDraft(title: String!, content: String): Post
+#   deletePost(id: ID!): Post
+#   publish(id: ID!): Post
+# }
+
+type File {
+  id: ID!
+  name: String
+  docType: String
+}
