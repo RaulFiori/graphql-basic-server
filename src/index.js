@@ -5,26 +5,20 @@ const { File } = models;
 const resolvers = {
   Query: {
     files: () => File.findAll(),
-    file: (_, {id}) => File.findByPk(id),
+    file: (_, { id }) => File.findByPk(id),
     hello: () => 'olá'
+  },
+  Mutation: {
+    createFile: (_, { file }) => File.create(file, { returning: true }),
+    updateFile: async (_, { file }) => {
+      const { id } = file;
+      const fileInDb = await File.findByPk(id);
+      fileInDb.update(file);
+      return fileInDb;
+    },
+    deleteFile: (_, { id }) =>
+      File.destroy({ where: { id } }).then(() => 'file deleted')
   }
-  // Mutation: {
-  //   createDraft(parent, { title, content }, context) {
-  //     return context.prisma.createPost({
-  //       title,
-  //       content,
-  //     })
-  //   },
-  //   deletePost(parent, { id }, context) {
-  //     return context.prisma.deletePost({ id })
-  //   },
-  //   publish(parent, { id }, context) {
-  //     return context.prisma.updatePost({
-  //       where: { id },
-  //       data: { published: true },
-  //     })
-  //   },
-  // },
 };
 
 const server = new GraphQLServer({

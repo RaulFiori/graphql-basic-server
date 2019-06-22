@@ -1,14 +1,20 @@
 type Query {
   files: [File]
-  file: File
+  file(id: String): File
   hello: String
 }
 
-# type Mutation {
-#   createDraft(title: String!, content: String): Post
-#   deletePost(id: ID!): Post
-#   publish(id: ID!): Post
-# }
+type Mutation {
+  createFile(file: FileInput!): File
+  updateFile(file: FileInput!): File
+  deleteFile(id: String!): String
+}
+
+input FileInput {
+  id: ID
+  name: String
+  docType: String
+}
 
 type File {
   id: ID!
