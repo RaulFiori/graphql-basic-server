@@ -5,7 +5,7 @@ const { File } = models;
 
 const resolvers = {
   Query: {
-    files: () => File.findAll(),
+    files: () => File.findAll({ order: [['createdAt', 'DESC']] }),
     file: (_, { id }) => File.findByPk(id)
   },
   Mutation: {
