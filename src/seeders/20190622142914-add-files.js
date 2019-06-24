@@ -2,31 +2,31 @@ const { File } = require('../models');
 
 const FILES = [
   {
-    name: 'teste',
+    name: 'trabalho',
     docType: '.doc'
   },
   {
-    name: 'teste2',
+    name: 'monografia',
     docType: '.doc'
   },
   {
-    name: 'teste3',
+    name: 'contas',
     docType: '.doc'
   },
   {
-    name: 'teste4',
+    name: 'lista-de-compras',
     docType: '.doc'
   },
   {
-    name: 'teste5',
+    name: 'testes',
     docType: '.doc'
   },
   {
-    name: 'teste6',
+    name: 'projetos',
     docType: '.doc'
   },
   {
-    name: 'teste7',
+    name: 'lista de afazeres',
     docType: '.doc'
   }
 ];
