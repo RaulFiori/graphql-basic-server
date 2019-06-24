@@ -1,11 +1,12 @@
 const models = require('../models');
 const moment = require('moment');
-const { File } = models;
+const { File, Folder } = models;
 
 const resolvers = {
   Query: {
     files: () => File.findAll({ order: [['createdAt', 'DESC']] }),
-    file: (_, { id }) => File.findByPk(id)
+    file: (_, { id }) => File.findByPk(id),
+    folders: () => Folder.findAll({ order: [['createdAt', 'DESC']] })
   },
   Mutation: {
     createFile: (_, { file }) => File.create(file, { returning: true }),
@@ -19,6 +20,9 @@ const resolvers = {
       File.destroy({ where: { id } }).then(() => 'file deleted')
   },
   File: {
+    createdAt: ({ createdAt }) => moment(createdAt).format('DD/MM/YYYY HH:mm')
+  },
+  Folder: {
     createdAt: ({ createdAt }) => moment(createdAt).format('DD/MM/YYYY HH:mm')
   }
 };

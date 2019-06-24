@@ -1,6 +1,7 @@
 type Query {
   files: [File]
   file(id: String): File
+  folders: [Folder]
 }
 
 type Mutation {
@@ -19,5 +20,11 @@ type File {
   id: ID!
   name: String
   docType: String
+  createdAt: String
+}
+
+type Folder {
+  id: ID!
+  name: String
   createdAt: String
 }
