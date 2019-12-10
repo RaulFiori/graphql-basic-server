@@ -4,6 +4,10 @@ type Query {
   folders: [Folder]
 }
 
+type Subscription {
+  fileEdited: File
+}
+
 type Mutation {
   createFile(file: FileInput!): File
   updateFile(file: FileInput!): File
