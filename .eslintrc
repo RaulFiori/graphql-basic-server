@@ -1,14 +1,21 @@
 {
-  "extends": ["prettier"],
+  "extends": ["airbnb-base", "prettier"],
   "parser": "babel-eslint",
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "import", "promise"],
   "rules": {
+    "no-undef": "error",
+    "max-lines-per-function": ["error", { "max": 25 }],
+    "no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "obj|args|context|info|_" }
+    ],
     "prettier/prettier": [
       "error",
       {
         "singleQuote": true,
         "printWidth": 80,
-        "trailingComma": "all"
+        "trailingComma": "all",
+        "arrowParens": "avoid"
       }
     ]
   }

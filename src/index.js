@@ -10,6 +10,10 @@ const server = new GraphQLServer({
 });
 
 server.start(
-  { subscriptions: '/subscriptions', playground: '/playground' },
+  {
+    subscriptions: '/subscriptions',
+    playground: '/playground',
+    endpoint: '/graphql',
+  },
   () => console.log('Server is running on http://localhost:4000'),
 );

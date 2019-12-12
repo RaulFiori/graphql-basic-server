@@ -6,12 +6,19 @@ type Query {
 
 type Subscription {
   fileEdited: File
+  fileCreated: File
+  fileChange: FileSubscription
 }
 
 type Mutation {
   createFile(file: FileInput!): File
   updateFile(file: FileInput!): File
   deleteFile(id: String!): String
+}
+
+type FileSubscription {
+  fileEdited: File
+  fileCreated: File
 }
 
 input FileInput {
